@@ -7,5 +7,5 @@
 // Si todavía no tienes Supabase, la landing funciona visualmente,
 // pero la confirmación no se guardará en una base de datos hasta completar esto.
 
-window.SUPABASE_URL = "PEGA_AQUI_TU_SUPABASE_URL";
-window.SUPABASE_ANON_KEY = "PEGA_AQUI_TU_SUPABASE_ANON_KEY";
+window.SUPABASE_URL = "https://litymruypwshkwjifrkm.supabase.co";
+window.SUPABASE_ANON_KEY = "sb_secret_gF2vb9a5_KTD4tNZZYL3OQ_nOLU9FXW";
