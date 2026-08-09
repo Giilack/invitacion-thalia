@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#d94f8a" />
+  <meta name="description" content="Invitación de cumpleaños de 17 años de Thalia." />
+  <title>Thalia | Mis 17 años</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="sparkles" aria-hidden="true"></div>
+
+  <header class="hero" id="inicio">
+    <nav class="nav">
+      <a href="#inicio" class="brand">THALIA<span>17</span></a>
+      <div class="nav-links">
+        <a href="#evento">Evento</a>
+        <a href="#ubicacion">Ubicación</a>
+        <a href="#confirmar">Confirmar</a>
+      </div>
+    </nav>
+
+    <div class="hero-content">
+      <p class="eyebrow">MIS 17 AÑOS</p>
+      <h1>Thalia</h1>
+      <div class="ornament">✦</div>
+      <p class="hero-date">05 · SEPTIEMBRE · 2026</p>
+      <p class="hero-copy">Hay momentos que se vuelven recuerdos para siempre.<br>Quiero compartir este día tan especial contigo.</p>
+      <a class="btn btn-primary" href="#confirmar">Confirmar asistencia</a>
+    </div>
+
+    <div class="scroll-indicator">SCROLL <span>↓</span></div>
+  </header>
+
+  <main>
+    <section class="section intro">
+      <p class="eyebrow">UNA NOCHE ESPECIAL</p>
+      <h2>Estoy celebrando<br><em>mis 17 años</em></h2>
+      <p>Y sería increíble contar con tu presencia para disfrutar juntos de una noche llena de música, alegría y momentos inolvidables.</p>
+      <div class="divider">✧</div>
+    </section>
+
+    <section class="countdown-section">
+      <div class="section-inner">
+        <p class="eyebrow light">FALTA MUY POQUITO</p>
+        <h2>Cuenta regresiva</h2>
+        <div class="countdown" id="countdown">
+          <div class="time-box"><strong id="days">00</strong><span>DÍAS</span></div>
+          <div class="time-box"><strong id="hours">00</strong><span>HORAS</span></div>
+          <div class="time-box"><strong id="minutes">00</strong><span>MINUTOS</span></div>
+          <div class="time-box"><strong id="seconds">00</strong><span>SEGUNDOS</span></div>
+        </div>
+        <p class="countdown-note">05 de septiembre de 2026 · 7:30 PM</p>
+      </div>
+    </section>
+
+    <section class="section" id="evento">
+      <p class="eyebrow">TE ESPERO</p>
+      <h2>Detalles del <em>evento</em></h2>
+      <div class="details-grid">
+        <article class="detail-card">
+          <div class="icon">♡</div>
+          <span>FECHA</span>
+          <strong>05 de septiembre</strong>
+          <small>Sábado · 2026</small>
+        </article>
+        <article class="detail-card">
+          <div class="icon">◷</div>
+          <span>HORA</span>
+          <strong>7:30 PM</strong>
+          <small>Te esperamos puntual</small>
+        </article>
+        <article class="detail-card">
+          <div class="icon">⌖</div>
+          <span>LUGAR</span>
+          <strong>Av. César Tello 975</strong>
+          <small>Lince · Lima</small>
+        </article>
+      </div>
+    </section>
+
+    <section class="location-section" id="ubicacion">
+      <div class="location-copy">
+        <p class="eyebrow">¿CÓMO LLEGAR?</p>
+        <h2>Nos vemos en <em>Lince</em></h2>
+        <p>Av. César Tello 975 - Lince, Lima.</p>
+        <a class="btn btn-primary" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Av.%20Cesar%20Tello%20975%2C%20Lince%2C%20Lima%2C%20Peru">Abrir ubicación en GPS ↗</a>
+      </div>
+      <div class="map-card">
+        <div class="map-pin">♥</div>
+        <div class="map-label">AV. CÉSAR TELLO 975<br><span>LINCE · LIMA</span></div>
+        <a target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Av.%20Cesar%20Tello%20975%2C%20Lince%2C%20Lima%2C%20Peru">Ver en Google Maps</a>
+      </div>
+    </section>
+
+    <section class="section rsvp-section" id="confirmar">
+      <p class="eyebrow">TU PRESENCIA ES IMPORTANTE</p>
+      <h2>¿Vienes a celebrar<br><em>conmigo?</em></h2>
+      <p class="section-subtitle">Confirma tu asistencia para que podamos tener todo preparado para ti.</p>
+
+      <form id="rsvpForm" class="rsvp-form">
+        <div class="field-row">
+          <label>
+            Nombre
+            <input id="nombre" name="nombre" type="text" placeholder="Tu nombre" required maxlength="60" />
+          </label>
+          <label>
+            Apellido
+            <input id="apellido" name="apellido" type="text" placeholder="Tu apellido" required maxlength="60" />
+          </label>
+        </div>
+        <label>
+          ¿Confirmas tu asistencia?
+          <select id="asistencia" name="asistencia" required>
+            <option value="">Selecciona una opción</option>
+            <option value="Sí, asistiré">Sí, asistiré ✨</option>
+            <option value="No podré asistir">No podré asistir</option>
+          </select>
+        </label>
+        <button class="btn btn-primary btn-full" type="submit">Enviar confirmación</button>
+        <p id="formMessage" class="form-message"></p>
+      </form>
+
+      <div class="share-box">
+        <span>¿Quieres enviar esta invitación?</span>
+        <button id="shareBtn" class="share-btn" type="button">Compartir invitación ↗</button>
+      </div>
+    </section>
+
+    <section class="closing">
+      <div class="closing-content">
+        <p class="eyebrow">CON CARIÑO</p>
+        <h2>Te espero, <em>no faltes.</em></h2>
+        <div class="ornament">✦</div>
+        <p>Thalia · Mis 17 años</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>THALIA · 17 · 05.09.2026</footer>
+  <script src="config.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="script.js"></script>
+</body>
+</html>
