@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Thalia | Confirmaciones</title>
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="admin.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- LOGIN -->
+
+    <section
+        id="loginScreen"
+        class="login-screen"
+    >
+
+        <div class="login-card">
+
+            <div class="logo">
+                THALIA <span>17</span>
+            </div>
+
+            <div class="heart">
+                ♡
+            </div>
+
+            <h1>
+                Panel de<br>
+                <i>confirmaciones</i>
+            </h1>
+
+            <p>
+                Ingresa tus datos para consultar
+                las confirmaciones de tus invitados.
+            </p>
+
+
+            <form id="loginForm">
+
+                <label>
+                    Correo electrónico
+                </label>
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="tu correo"
+                    required
+                >
+
+
+                <label>
+                    Contraseña
+                </label>
+
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Tu contraseña"
+                    required
+                >
+
+
+                <button
+                    type="submit"
+                    class="main-button"
+                >
+                    Ingresar
+                </button>
+
+
+                <p
+                    id="loginMessage"
+                    class="message"
+                ></p>
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- PANEL -->
+
+    <section
+        id="dashboard"
+        class="dashboard hidden"
+    >
+
+        <header class="topbar">
+
+            <div>
+
+                <p>
+                    MIS 17 AÑOS
+                </p>
+
+                <h2>
+                    Thalia
+                </h2>
+
+            </div>
+
+
+            <button
+                id="logoutButton"
+                class="logout"
+            >
+                Cerrar sesión
+            </button>
+
+        </header>
+
+
+
+        <main>
+
+
+            <div class="welcome">
+
+                <div>
+
+                    <span>
+                        PANEL PRIVADO
+                    </span>
+
+                    <h1>
+                        Confirmaciones
+                    </h1>
+
+                    <p>
+                        Aquí puedes consultar quiénes
+                        confirmaron su asistencia.
+                    </p>
+
+                </div>
+
+
+                <div
+                    id="liveStatus"
+                    class="live"
+                >
+                    ● EN VIVO
+                </div>
+
+            </div>
+
+
+
+            <!-- ESTADÍSTICAS -->
+
+            <div class="stats">
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        👥
+                    </div>
+
+                    <span>
+                        TOTAL
+                    </span>
+
+                    <strong id="total">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        💗
+                    </div>
+
+                    <span>
+                        ASISTIRÁN
+                    </span>
+
+                    <strong id="yes">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        🤍
+                    </div>
+
+                    <span>
+                        NO ASISTIRÁN
+                    </span>
+
+                    <strong id="no">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- REGISTRADOS -->
+
+            <div class="registrations">
+
+                <div class="section-header">
+
+                    <div>
+
+                        <span>
+                            LISTA DE INVITADOS
+                        </span>
+
+                        <h2>
+                            Registrados
+                        </h2>
+
+                    </div>
+
+
+                    <button
+                        id="refreshButton"
+                        class="refresh"
+                    >
+                        ↻ Actualizar
+                    </button>
+
+                </div>
+
+
+
+                <div class="table-container">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    #
+                                </th>
+
+                                <th>
+                                    Nombre
+                                </th>
+
+                                <th>
+                                    Apellido
+                                </th>
+
+                                <th>
+                                    Asistencia
+                                </th>
+
+                                <th>
+                                    Fecha
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="registrationsTable">
+
+                        </tbody>
+
+                    </table>
+
+
+                    <div
+                        id="emptyState"
+                        class="empty"
+                    >
+                        Todavía no hay confirmaciones.
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </main>
+
+
+        <footer>
+
+            THALIA · MIS 17 AÑOS · 05.09.2026
+
+        </footer>
+
+    </section>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <script src="config.js"></script>
+
+    <script src="admin.js"></script>
+
+</body>
+
+</html>
