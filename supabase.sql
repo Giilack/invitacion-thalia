@@ -15,7 +15,7 @@ alter table public.confirmaciones enable row level security;
 create policy "Permitir registrar confirmaciones"
 on public.confirmaciones
 for insert
-to anon
+to anon, authenticated
 with check (
   char_length(nombre) between 1 and 60
   and char_length(apellido) between 1 and 60
