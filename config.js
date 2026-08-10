@@ -8,4 +8,4 @@
 // pero la confirmación no se guardará en una base de datos hasta completar esto.
 
 window.SUPABASE_URL = "https://litymruypwshkwjifrkm.supabase.co";
-window.SUPABASE_ANON_KEY = "sb_publishable_YAy9Gv8ca3z_qEAJaQx7hg_SLkvS1";
+window.SUPABASE_ANON_KEY = "sb_publishable_YAy9Gv8ca3z_qEAJaQx7hg_SLkvS1-T";
