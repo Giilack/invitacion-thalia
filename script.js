@@ -51,10 +51,12 @@ const validConfig =
     !window.SUPABASE_ANON_KEY.includes("PEGA_AQUI");
 
 if (validConfig && window.supabase) {
+
     supabaseClient = window.supabase.createClient(
         window.SUPABASE_URL,
         window.SUPABASE_ANON_KEY
     );
+
 }
 
 
@@ -63,59 +65,111 @@ if (validConfig && window.supabase) {
 // ==========================================
 
 form.addEventListener("submit", async (e) => {
+
     e.preventDefault();
 
-    const nombre = document.getElementById("nombre").value.trim();
-    const apellido = document.getElementById("apellido").value.trim();
-    const asistencia = document.getElementById("asistencia").value;
+    const nombre =
+        document.getElementById("nombre").value.trim();
+
+    const apellido =
+        document.getElementById("apellido").value.trim();
+
+    const asistencia =
+        document.getElementById("asistencia").value;
+
 
     if (!nombre || !apellido || !asistencia) {
-        message.textContent = "Completa todos los campos.";
+
+        message.textContent =
+            "Completa todos los campos.";
+
         return;
     }
 
-    const button = form.querySelector("button[type=submit]");
+
+    const button =
+        form.querySelector("button[type=submit]");
+
 
     button.disabled = true;
-    button.textContent = "Guardando...";
+
+    button.textContent =
+        "Guardando...";
+
 
     try {
 
         if (!supabaseClient) {
-            throw new Error("Supabase no configurado");
+
+            throw new Error(
+                "Supabase no está configurado correctamente."
+            );
+
         }
 
-        const { error } = await supabaseClient
-            .from("confirmaciones")
-            .insert([
-                {
-                    nombre: nombre,
-                    apellido: apellido,
-                    asistencia: asistencia
-                }
-            ]);
+
+        const { data, error } =
+            await supabaseClient
+                .from("confirmaciones")
+                .insert([
+                    {
+                        nombre: nombre,
+                        apellido: apellido,
+                        asistencia: asistencia
+                    }
+                ])
+                .select();
+
 
         if (error) {
+
+            console.error(
+                "ERROR REAL DE SUPABASE:",
+                error
+            );
+
             throw error;
         }
+
+
+        console.log(
+            "Confirmación guardada:",
+            data
+        );
+
 
         message.textContent =
             "¡Gracias! Tu confirmación fue registrada. ✨";
 
+
         form.reset();
+
 
     } catch (error) {
 
-        console.error("Error Supabase:", error);
+        console.error(
+            "Error completo:",
+            error
+        );
 
+
+        // MOSTRAR EL ERROR REAL
         message.textContent =
-            "No se pudo guardar la confirmación. Inténtalo nuevamente.";
+            "Error: " + (
+                error.message ||
+                "No se pudo guardar la confirmación."
+            );
+
 
     } finally {
 
         button.disabled = false;
-        button.textContent = "Enviar confirmación";
+
+        button.textContent =
+            "Enviar confirmación";
+
     }
+
 });
 
 
@@ -123,36 +177,46 @@ form.addEventListener("submit", async (e) => {
 // COMPARTIR INVITACION
 // ==========================================
 
-document.getElementById("shareBtn").addEventListener("click", async () => {
+document
+    .getElementById("shareBtn")
+    .addEventListener("click", async () => {
 
-    const data = {
-        title: "Invitación · Thalia 17 años",
+        const data = {
 
-        text:
-            "✨ Estás invitado/a a celebrar los 17 años de Thalia. Mira la invitación y confirma tu asistencia:",
+            title:
+                "Invitación · Thalia 17 años",
 
-        url: window.location.href
-    };
+            text:
+                "✨ Estás invitado/a a celebrar los 17 años de Thalia. Mira la invitación y confirma tu asistencia:",
 
-    try {
-
-        if (navigator.share) {
-
-            await navigator.share(data);
-
-        } else {
-
-            await navigator.clipboard.writeText(
+            url:
                 window.location.href
-            );
 
-            alert(
-                "¡Enlace copiado! Ya puedes enviarlo por WhatsApp."
-            );
+        };
+
+
+        try {
+
+            if (navigator.share) {
+
+                await navigator.share(data);
+
+            } else {
+
+                await navigator.clipboard.writeText(
+                    window.location.href
+                );
+
+                alert(
+                    "¡Enlace copiado! Ya puedes enviarlo por WhatsApp."
+                );
+
+            }
+
+        } catch (_) {
+
+            // El usuario canceló el compartir
+
         }
 
-    } catch (_) {
-        // El usuario canceló el compartir
-    }
-
-});
+    });
