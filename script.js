@@ -92,9 +92,7 @@ form.addEventListener("submit", async (e) => {
 
 
     button.disabled = true;
-
-    button.textContent =
-        "Guardando...";
+    button.textContent = "Guardando...";
 
 
     try {
@@ -108,7 +106,11 @@ form.addEventListener("submit", async (e) => {
         }
 
 
-        const { data, error } =
+        // IMPORTANTE:
+        // NO usamos .select()
+        // porque los invitados no tienen permiso SELECT.
+
+        const { error } =
             await supabaseClient
                 .from("confirmaciones")
                 .insert([
@@ -117,8 +119,7 @@ form.addEventListener("submit", async (e) => {
                         apellido: apellido,
                         asistencia: asistencia
                     }
-                ])
-                .select();
+                ]);
 
 
         if (error) {
@@ -130,12 +131,6 @@ form.addEventListener("submit", async (e) => {
 
             throw error;
         }
-
-
-        console.log(
-            "Confirmación guardada:",
-            data
-        );
 
 
         message.textContent =
@@ -153,9 +148,9 @@ form.addEventListener("submit", async (e) => {
         );
 
 
-        // MOSTRAR EL ERROR REAL
         message.textContent =
-            "Error: " + (
+            "Error: " +
+            (
                 error.message ||
                 "No se pudo guardar la confirmación."
             );
